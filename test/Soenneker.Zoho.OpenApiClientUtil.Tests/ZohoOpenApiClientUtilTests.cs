@@ -1,20 +1,19 @@
 using Soenneker.Zoho.OpenApiClientUtil.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Zoho.OpenApiClientUtil.Tests;
 
-[Collection("Collection")]
-public sealed class ZohoOpenApiClientUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class ZohoOpenApiClientUtilTests : HostedUnitTest
 {
     private readonly IZohoOpenApiClientUtil _openapiclientutil;
 
-    public ZohoOpenApiClientUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public ZohoOpenApiClientUtilTests(Host host) : base(host)
     {
         _openapiclientutil = Resolve<IZohoOpenApiClientUtil>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
