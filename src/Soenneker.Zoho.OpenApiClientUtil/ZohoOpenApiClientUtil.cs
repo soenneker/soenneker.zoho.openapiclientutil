@@ -19,7 +19,7 @@ public sealed class ZohoOpenApiClientUtil : IZohoOpenApiClientUtil
 {
     private readonly SingletonDictionary<ZohoOpenApiClient> _clients;
     private readonly IZohoOpenApiHttpClient _httpClientUtil;
-    private readonly string _apiKey;
+    private readonly IConfiguration _configuration;
     private readonly string _baseUrl;
     private readonly string _authHeaderName;
     private readonly string _authHeaderValueTemplate;
@@ -27,7 +27,7 @@ public sealed class ZohoOpenApiClientUtil : IZohoOpenApiClientUtil
     public ZohoOpenApiClientUtil(IZohoOpenApiHttpClient httpClientUtil, IConfiguration configuration)
     {
         _httpClientUtil = httpClientUtil;
-        _apiKey = configuration.GetValueStrict<string>("Zoho:ApiKey");
+        _configuration = configuration;
         _baseUrl = configuration["Zoho:ClientBaseUrl"] ?? "https://zohoapis.com/crm/8.0";
         _authHeaderName = configuration["Zoho:AuthHeaderName"] ?? "Authorization";
         _authHeaderValueTemplate = configuration["Zoho:AuthHeaderValueTemplate"] ?? "Bearer {token}";
@@ -37,7 +37,7 @@ public sealed class ZohoOpenApiClientUtil : IZohoOpenApiClientUtil
     private async ValueTask<ZohoOpenApiClient> CreateClient(string connectionKey, CancellationToken token)
     {
         (string apiKey, string baseUrl) = ParseConnectionKey(connectionKey);
-        HttpClient httpClient = await _httpClientUtil.Get(token).NoSync();
+        HttpClient httpClient = await _httpClientUtil.Get(apiKey, baseUrl, token).NoSync();
         string authHeaderValue = _authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
 
         var requestAdapter = new HttpClientRequestAdapter(
@@ -51,7 +51,7 @@ public sealed class ZohoOpenApiClientUtil : IZohoOpenApiClientUtil
 
     public ValueTask<ZohoOpenApiClient> Get(CancellationToken cancellationToken = default)
     {
-        return Get(_apiKey, _baseUrl, cancellationToken);
+        return Get(_configuration.GetValueStrict<string>("Zoho:ApiKey"), _baseUrl, cancellationToken);
     }
 
     public ValueTask<ZohoOpenApiClient> Get(string apiKey, CancellationToken cancellationToken = default)
