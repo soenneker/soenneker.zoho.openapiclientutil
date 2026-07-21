@@ -44,6 +44,6 @@
         <PackageReference Include="Soenneker.Dictionaries.Singletons" Version="4.0.66" />
         <PackageReference Include="Soenneker.Kiota.GenericAuthenticationProvider" Version="4.0.37" />
         <PackageReference Include="Soenneker.Zoho.HttpClients" Version="4.0.73" />
-        <PackageReference Include="Soenneker.Zoho.OpenApiClient" Version="4.0.20" />
+        <PackageReference Include="Soenneker.Zoho.OpenApiClient" Version="4.0.21" />
     </ItemGroup>
 </Project>
