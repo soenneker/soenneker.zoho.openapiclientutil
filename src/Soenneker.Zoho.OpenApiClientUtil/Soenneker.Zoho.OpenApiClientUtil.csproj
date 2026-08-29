@@ -41,7 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Kiota.GenericAuthenticationProvider" Version="4.0.38" />
+        <PackageReference Include="Soenneker.Kiota.GenericAuthenticationProvider" Version="4.0.40" />
         <PackageReference Include="Soenneker.Zoho.HttpClients" Version="4.0.105" />
         <PackageReference Include="Soenneker.Zoho.OpenApiClient" Version="4.0.22" />
     </ItemGroup>
