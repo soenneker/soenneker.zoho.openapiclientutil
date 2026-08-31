@@ -6,12 +6,12 @@ using Soenneker.Zoho.OpenApiClientUtil.Abstract;
 namespace Soenneker.Zoho.OpenApiClientUtil.Registrars;
 
 /// <summary>
-/// Registers the OpenAPI client utility for dependency injection.
+/// Registers the configured Zoho OpenAPI client provider.
 /// </summary>
 public static class ZohoOpenApiClientUtilRegistrar
 {
     /// <summary>
-    /// Adds <see cref="ZohoOpenApiClientUtil"/> as a singleton service. <para/>
+    /// Adds <see cref="IZohoOpenApiClientUtil"/> as a singleton service.
     /// </summary>
     public static IServiceCollection AddZohoOpenApiClientUtilAsSingleton(this IServiceCollection services)
     {
@@ -22,7 +22,7 @@ public static class ZohoOpenApiClientUtilRegistrar
     }
 
     /// <summary>
-    /// Adds <see cref="ZohoOpenApiClientUtil"/> as a scoped service. <para/>
+    /// Adds <see cref="IZohoOpenApiClientUtil"/> as a scoped service while retaining the singleton HTTP transport.
     /// </summary>
     public static IServiceCollection AddZohoOpenApiClientUtilAsScoped(this IServiceCollection services)
     {
