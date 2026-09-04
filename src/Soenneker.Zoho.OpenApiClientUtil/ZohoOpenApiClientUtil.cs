@@ -14,6 +14,7 @@ using Soenneker.Zoho.OpenApiClient;
 
 namespace Soenneker.Zoho.OpenApiClientUtil;
 
+/// <inheritdoc cref="IZohoOpenApiClientUtil" />
 public sealed class ZohoOpenApiClientUtil : IZohoOpenApiClientUtil
 {
     private readonly SingletonDictionary<ZohoOpenApiClient> _clients;
