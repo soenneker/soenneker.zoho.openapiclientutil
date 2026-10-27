@@ -44,7 +44,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Zoho.HttpClients" Version="11.0.195" />
-        <PackageReference Include="Soenneker.Zoho.OpenApiClient" Version="11.0.50" />
+        <PackageReference Include="Soenneker.Zoho.HttpClients" Version="11.0.196" />
+        <PackageReference Include="Soenneker.Zoho.OpenApiClient" Version="11.0.51" />
     </ItemGroup>
 </Project>
